@@ -9,23 +9,23 @@ import { STORAGE_KEYS } from '../constants';
  * 从 localStorage 读取交易记录
  * @returns 交易记录数组，如果不存在则返回空数组
  */
-export const loadTrades = (): OptionTrade[] => {
+export const loadTrades = (): OptionTrade[] | null => {
     try {
         const stored = localStorage.getItem(STORAGE_KEYS.TRADES);
-        if (!stored) return [];
+        if (stored === null) return null;
 
         const parsed = JSON.parse(stored);
 
         // 数据验证
         if (!Array.isArray(parsed)) {
-            console.warn('Invalid trades data in localStorage, returning empty array');
-            return [];
+            console.warn('Invalid trades data in localStorage, returning null');
+            return null;
         }
 
         return parsed;
     } catch (error) {
         console.error('Error loading trades from localStorage:', error);
-        return [];
+        return null;
     }
 };
 

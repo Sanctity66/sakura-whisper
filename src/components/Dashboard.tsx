@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
   // 初始化时尝试从 localStorage 加载数据
   const [trades, setTrades] = useState<OptionTrade[]>(() => {
     const savedTrades = loadTrades();
-    if (savedTrades.length > 0) {
+    if (savedTrades !== null) {
       return savedTrades;
     }
     // 如果没有保存的数据，使用默认的示例数据
