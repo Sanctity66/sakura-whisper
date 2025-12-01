@@ -11,7 +11,7 @@ const App: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="relative min-h-screen w-full font-sans selection:bg-pink-200 selection:text-pink-900">
+    <div className="relative min-h-screen w-full overflow-hidden font-sans selection:bg-pink-200 selection:text-pink-900">
       <SakuraBackground onLoad={() => setIsBackgroundLoaded(true)} />
 
       {/* Content Wrapper with Fade-In Transition */}

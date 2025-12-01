@@ -35,10 +35,10 @@ const MobileDashboard: React.FC = () => {
                 </header>
             )}
 
-            <main className="relative z-10 w-full min-h-screen">
+            <main className="relative z-10 w-full min-h-screen overflow-y-auto">
                 {/* 交易表单视图 */}
                 {currentView === AppView.TRADE_FORM && (
-                    <div className="relative">
+                    <div className="relative min-h-screen">
                         <button
                             onClick={handleReturnToDashboard}
                             className="fixed top-4 left-4 z-50 flex items-center gap-1 text-slate-600 active:text-pink-600 transition-colors bg-white/80 px-3 py-2 rounded-full backdrop-blur-md shadow-sm border border-white/50 font-medium"
@@ -53,7 +53,7 @@ const MobileDashboard: React.FC = () => {
                 )}
 
                 {/* 主视图容器 */}
-                <div className={currentView === AppView.TRADE_FORM ? 'hidden' : 'block'}>
+                <div className={currentView === AppView.TRADE_FORM ? 'hidden' : 'block min-h-screen'}>
                     {/* 仪表板概览 */}
                     <div className={currentView === AppView.DASHBOARD ? 'block' : 'hidden'}>
                         <MobileOverview
