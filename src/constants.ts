@@ -8,6 +8,7 @@
 /** localStorage中存储交易记录的键名 */
 export const STORAGE_KEYS = {
   TRADES: 'sakura-option-trades',
+  HAS_LAUNCHED: 'sakura-has-launched',
 } as const;
 
 // ==================== 设计系统 - 颜色配置 ====================

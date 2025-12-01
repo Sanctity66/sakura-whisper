@@ -8,6 +8,7 @@ import HistoryList from './HistoryList';
 import { AppView, OptionTrade, TradeLogInput } from '../types';
 import { processTradeLog, calculateTotalRealizedProfit } from '../utils/tradeCalculations';
 import { loadTrades, saveTrades } from '../utils/storageUtils';
+import { STORAGE_KEYS } from '../constants';
 
 // --- 主组件 ---
 
@@ -22,7 +23,15 @@ const Dashboard: React.FC = () => {
     if (savedTrades !== null) {
       return savedTrades;
     }
-    // 如果没有保存的数据，使用默认的示例数据
+
+    // 检查是否是首次启动
+    // 如果不是首次启动但没有数据 (savedTrades === null)，说明数据被清空了，应该返回空数组而不是默认数据
+    const hasLaunched = localStorage.getItem(STORAGE_KEYS.HAS_LAUNCHED);
+    if (hasLaunched) {
+      return [];
+    }
+
+    // 如果没有保存的数据且是首次启动，使用默认的示例数据
     return [
       {
         id: '1',
@@ -78,6 +87,13 @@ const Dashboard: React.FC = () => {
       }
     ];
   });
+
+  // 首次加载时设置启动标记
+  useEffect(() => {
+    if (!localStorage.getItem(STORAGE_KEYS.HAS_LAUNCHED)) {
+      localStorage.setItem(STORAGE_KEYS.HAS_LAUNCHED, 'true');
+    }
+  }, []);
 
   // 当 trades 发生变化时，保存到 localStorage
   useEffect(() => {
