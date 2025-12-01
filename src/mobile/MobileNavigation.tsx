@@ -18,7 +18,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentView, onChan
     const activeId = currentView === AppView.TRADE_FORM ? AppView.DASHBOARD : currentView;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-t border-white/60 shadow-lg">
+        <div className="fixed bottom-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-xl border-t border-white/80 shadow-2xl">
             <nav className="flex justify-around items-center px-2 py-2 safe-area-inset-bottom">
                 {navItems.map((item) => {
                     const isActive = activeId === item.id;
