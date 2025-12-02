@@ -18,8 +18,9 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentView, onChan
     const activeId = currentView === AppView.TRADE_FORM ? AppView.DASHBOARD : currentView;
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-xl border-t border-white/80 shadow-2xl">
-            <nav className="flex justify-around items-center px-2 py-2 safe-area-inset-bottom">
+        <div className="fixed bottom-0 left-0 right-0 z-[200] pointer-events-auto">
+            <div className="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-white/40 to-transparent pointer-events-none"></div>
+            <nav className="flex justify-around items-center px-3 py-2 safe-area-inset-bottom bg-white/30 backdrop-blur-xl border-t border-white/40 ring-1 ring-white/50 shadow-2xl">
                 {navItems.map((item) => {
                     const isActive = activeId === item.id;
                     return (
@@ -27,10 +28,10 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ currentView, onChan
                             key={item.id}
                             onClick={() => onChangeView(item.id)}
                             className={`
-                flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-lg transition-all duration-200
+                flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-xl transition-all duration-200 backdrop-blur-md
                 ${isActive
-                                    ? 'bg-slate-800 text-white shadow-md'
-                                    : 'text-slate-500 active:bg-slate-100'
+                                    ? 'bg-white/30 text-slate-900 shadow-md ring-1 ring-white/60'
+                                    : 'text-slate-600 active:bg-white/40'
                                 }
               `}
                         >

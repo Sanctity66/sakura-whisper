@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 import MobileDashboard from './mobile/MobileDashboard';
 import { useIsMobile } from './hooks/useIsMobile';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const App: React.FC = () => {
   const [hasEntered, setHasEntered] = useState(false);
@@ -20,7 +21,13 @@ const App: React.FC = () => {
         {!hasEntered ? (
           <LandingPage onEnter={() => setHasEntered(true)} />
         ) : (
-          isMobile ? <MobileDashboard /> : <Dashboard />
+          isMobile ? (
+            <ErrorBoundary>
+              <MobileDashboard />
+            </ErrorBoundary>
+          ) : (
+            <Dashboard />
+          )
         )}
       </div>
 
