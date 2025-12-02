@@ -32,14 +32,15 @@ const HistoryList = memo(({ trades, onDeleteTrade }: HistoryListProps) => {
             {/* 2. 列表 - 延迟 200ms */}
             <div className="space-y-3 animate-float-in delay-200">
                 {closedTrades.map((trade) => (
-                    <Card key={trade.id} className="p-5 flex flex-col md:flex-row md:items-center justify-between group hover:bg-white/90">
-                        <div className="flex items-center gap-4 mb-3 md:mb-0">
-                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold shadow-md transition-transform group-hover:scale-110 ${trade.pnl >= 0 ? 'bg-gradient-to-br from-emerald-400 to-emerald-600' : 'bg-gradient-to-br from-rose-400 to-rose-600'}`}>
-                                {trade.pnl >= 0 ? <ArrowUpRight size={24} /> : <ArrowDownLeft size={24} />}
+                    <Card key={trade.id} className="p-4 md:p-5 flex flex-row items-center justify-between group hover:bg-white/90">
+                        <div className="flex items-center gap-3 md:gap-4">
+                            <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-white font-bold shadow-md transition-transform group-hover:scale-110 ${trade.pnl >= 0 ? 'bg-gradient-to-br from-emerald-400 to-emerald-600' : 'bg-gradient-to-br from-rose-400 to-rose-600'}`}>
+                                {trade.pnl >= 0 ? <ArrowUpRight size={20} className="md:w-6 md:h-6" /> : <ArrowDownLeft size={20} className="md:w-6 md:h-6" />}
                             </div>
                             <div>
-                                <h4 className="font-bold text-slate-800 text-lg">{trade.ticker} <span className="text-slate-400 font-normal text-sm">/ {trade.strategy}</span></h4>
-                                <p className="text-xs text-slate-500 mt-1 flex items-center gap-2">
+                                <h4 className="font-bold text-slate-800 text-base md:text-lg">{trade.ticker} <span className="text-slate-400 font-normal text-xs md:text-sm hidden sm:inline">/ {trade.strategy}</span></h4>
+                                <div className="sm:hidden text-xs text-slate-400">{trade.strategy}</div>
+                                <p className="text-xs text-slate-500 mt-0.5 md:mt-1 flex items-center gap-2">
                                     <span>{trade.closeDate}</span>
                                     <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
                                     <span>Qty: {trade.quantity}</span>
@@ -47,12 +48,12 @@ const HistoryList = memo(({ trades, onDeleteTrade }: HistoryListProps) => {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-4">
-                            <div className="flex flex-col md:items-end items-start mt-2 md:mt-0 pl-16 md:pl-0 border-l md:border-l-0 border-slate-100">
-                                <p className={`font-mono text-xl font-bold ${trade.pnl >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                        <div className="flex items-center gap-2 md:gap-4">
+                            <div className="flex flex-col items-end">
+                                <p className={`font-mono text-base md:text-xl font-bold ${trade.pnl >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                                     {trade.pnl >= 0 ? '+' : ''}{trade.pnl.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                                 </p>
-                                <p className="text-xs text-slate-400">
+                                <p className="text-[10px] md:text-xs text-slate-400 hidden sm:block">
                                     ${trade.entryPrice.toFixed(2)} &rarr; ${trade.closePrice?.toFixed(2)}
                                 </p>
                             </div>
@@ -61,10 +62,10 @@ const HistoryList = memo(({ trades, onDeleteTrade }: HistoryListProps) => {
                                     e.stopPropagation();
                                     onDeleteTrade(trade.id);
                                 }}
-                                className="ml-2 p-2 text-slate-300 hover:text-rose-500 hover:bg-rose-50 rounded-full transition-all group-hover/btn:scale-110"
+                                className="p-2 text-slate-300 hover:text-rose-500 hover:bg-rose-50 rounded-full transition-all group-hover/btn:scale-110"
                                 title="删除记录"
                             >
-                                <Trash2 size={18} />
+                                <Trash2 size={16} className="md:w-[18px] md:h-[18px]" />
                             </button>
                         </div>
                     </Card>
