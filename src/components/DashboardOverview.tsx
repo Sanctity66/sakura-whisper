@@ -38,9 +38,9 @@ const DashboardOverview = memo(({
         <div className="w-full max-w-3xl mx-auto px-6 pt-24 pb-32 transform-gpu">
             {/* 1. 头部指标 - 无延迟 */}
             <div className="text-center mb-12 relative z-10 animate-float-in">
-                <h2 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">总利润 (Total Realized P&L)</h2>
+                <h2 className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">总利润 (Total Realized P&L)</h2>
                 <div
-                    className={`text-6xl md:text-7xl font-serif font-bold tracking-tight transform-gpu will-change-transform ${totalRealizedProfit >= 0 ? 'text-slate-800' : 'text-rose-600'}`}
+                    className={`text-4xl sm:text-5xl md:text-7xl font-serif font-bold tracking-tight transform-gpu will-change-transform break-words px-2 ${totalRealizedProfit >= 0 ? 'text-slate-800' : 'text-rose-600'}`}
                 >
                     {totalRealizedProfit >= 0 ? '+' : ''}{totalRealizedProfit.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
                 </div>
