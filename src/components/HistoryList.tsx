@@ -24,8 +24,9 @@ const HistoryList = memo(({ trades, onDeleteTrade }: HistoryListProps) => {
                 <h1 className="text-2xl font-serif font-bold text-slate-800 flex items-center gap-2">
                     <History size={24} className="text-pink-500" /> 交易历史 (History)
                 </h1>
-                <div className="text-sm text-slate-500 font-medium bg-white/50 px-3 py-1 rounded-full border border-white/60">
-                    Total Closed: {closedTrades.length}
+                <div className="flex items-center gap-3 bg-white/60 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/60 shadow-sm">
+                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Closed</span>
+                    <span className="text-xl font-serif font-bold text-slate-800">{closedTrades.length}</span>
                 </div>
             </div>
 

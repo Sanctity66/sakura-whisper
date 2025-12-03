@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Save, Calendar, DollarSign, TrendingUp, Hash, ArrowUpCircle, ArrowDownCircle, ChevronDown, Calendar as CalendarIcon } from 'lucide-react';
+import { Save, Calendar, DollarSign, TrendingUp, Hash, ArrowUpCircle, ArrowDownCircle, ChevronDown, Calendar as CalendarIcon, Layers } from 'lucide-react';
 import { TradeLogInput } from '../types';
 
 interface JournalViewProps {
@@ -136,14 +136,16 @@ const JournalView: React.FC<JournalViewProps> = ({ onSave, initialData }) => {
                             <label htmlFor="ticker" className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
                                 <TrendingUp size={14} /> 标的 (Ticker)
                             </label>
-                            <TickerInput
-                                value={formData.ticker || ''}
-                                onChange={(val) => handleChange('ticker', val)}
-                            />
+                            <div className="relative">
+                                <TickerInput
+                                    value={formData.ticker || ''}
+                                    onChange={(val) => handleChange('ticker', val)}
+                                />
+                            </div>
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="strategy" className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                                策略 (Strategy)
+                                <Layers size={14} /> 策略 (Strategy)
                             </label>
                             <div className="relative group">
                                 <select
