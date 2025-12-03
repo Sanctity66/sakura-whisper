@@ -130,19 +130,21 @@ const JournalView: React.FC<JournalViewProps> = ({ onSave, initialData }) => {
                         </button>
                     </div>
 
-                    {/* Core Info */}
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <label htmlFor="ticker" className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                                <TrendingUp size={14} /> 标的 (Ticker)
-                            </label>
-                            <div className="relative">
-                                <TickerInput
-                                    value={formData.ticker || ''}
-                                    onChange={(val) => handleChange('ticker', val)}
-                                />
-                            </div>
+                    {/* Ticker (Full Width) */}
+                    <div className="space-y-2">
+                        <label htmlFor="ticker" className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                            <TrendingUp size={14} /> 标的 (Ticker)
+                        </label>
+                        <div className="relative">
+                            <TickerInput
+                                value={formData.ticker || ''}
+                                onChange={(val) => handleChange('ticker', val)}
+                            />
                         </div>
+                    </div>
+
+                    {/* Strategy & Date */}
+                    <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                             <label htmlFor="strategy" className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
                                 <Layers size={14} /> 策略 (Strategy)
@@ -151,7 +153,7 @@ const JournalView: React.FC<JournalViewProps> = ({ onSave, initialData }) => {
                                 <select
                                     id="strategy"
                                     required
-                                    className="w-full bg-white/50 border border-slate-200 rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-pink-300/50 text-slate-700 font-medium appearance-none cursor-pointer transition-all hover:bg-white/80"
+                                    className="w-full bg-white/50 border border-slate-200 rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-pink-300/50 text-lg text-slate-700 font-medium appearance-none cursor-pointer transition-all hover:bg-white/80"
                                     value={formData.strategy || ''}
                                     onChange={e => handleChange('strategy', e.target.value)}
                                     title="Strategy"
@@ -169,25 +171,24 @@ const JournalView: React.FC<JournalViewProps> = ({ onSave, initialData }) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    {/* Date */}
-                    <div className="space-y-2">
-                        <label htmlFor="expDate" className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                            <Calendar size={14} /> 到期日 (Exp Date)
-                        </label>
-                        <div className="relative group">
-                            <input
-                                id="expDate"
-                                required
-                                type="date"
-                                className="w-full bg-white/50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-300/50 text-slate-700 font-medium transition-all hover:bg-white/80 relative z-10"
-                                value={formData.expDate || ''}
-                                onChange={e => handleChange('expDate', e.target.value)}
-                                title="Expiration Date"
-                            />
-                            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-hover:text-pink-500 transition-colors z-20">
-                                <CalendarIcon size={20} />
+                        <div className="space-y-2">
+                            <label htmlFor="expDate" className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                <Calendar size={14} /> 到期日 (Exp Date)
+                            </label>
+                            <div className="relative group">
+                                <input
+                                    id="expDate"
+                                    required
+                                    type="date"
+                                    className="w-full bg-white/50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-300/50 text-lg text-slate-700 font-medium transition-all hover:bg-white/80 relative z-10"
+                                    value={formData.expDate || ''}
+                                    onChange={e => handleChange('expDate', e.target.value)}
+                                    title="Expiration Date"
+                                />
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 group-hover:text-pink-500 transition-colors z-20">
+                                    <CalendarIcon size={20} />
+                                </div>
                             </div>
                         </div>
                     </div>
